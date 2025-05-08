@@ -1,0 +1,128 @@
+body {
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: white;
+    border-radius: 10px;
+    width: 320px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.total {
+    background-color: rgb(211, 218, 223);
+    height: 135px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.status {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: 19px;
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+}
+
+.task {
+    height: 170px;
+    width: 100%;
+    display: flex;
+    overflow: scroll;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 30px;
+    margin: 15px 0px -10px 20px;
+    padding: 0 10px;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+}
+
+p {
+    margin: 0;
+}
+
+button {
+    background-color: rgb(80, 144, 240);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    width: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+}
+
+hr {
+    width: 100%;
+    border: 1px solid rgb(221, 221, 221);
+    margin: 0;
+}
+
+.status {
+    background-color: white;
+    margin: 0px 0px 0px 30px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.status ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.status li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.status a {
+    display: block;
+    text-decoration: none;
+    color: #374151;
+    padding: 10px 0;
+    font-weight: 500;
+}
+
+.btn {
+    position: absolute;
+    top: 110px;
+    left: 80%;
+    height: 50px;
+    border-radius: 20000px;
+    color:rgb(117, 172, 255);
+}
+
+.active {
+    border-bottom: 1px solid rgb(80, 144, 240);
+}
+
+.bon {
+    font-Size: 20px;
+    font-Family: italic;
+    font-Weight: bold;
+    color: white;
+}
