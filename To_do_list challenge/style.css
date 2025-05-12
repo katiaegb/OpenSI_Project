@@ -49,8 +49,7 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     gap: 30px;
-    margin: 15px 0px -10px 20px;
-    padding: 0 10px;
+    /* margin: 20px 0px 0px 0px; */
     font-family: 'Arial', sans-serif;
     font-size: 16px;
     font-weight: 500;
@@ -125,4 +124,29 @@ hr {
     font-Family: italic;
     font-Weight: bold;
     color: white;
+}
+
+.first_p {
+    position: relative;
+    font-size: 70px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.second_p {
+    position: absolute;
+    top: 60px;
+    left: 35px;
+    margin-left: 30px;
+    margin-top: 5px;
+    font-weight: normal;
+}
+
+.p {
+    font-size: 18px;
+    font-weight: 700;
+    position: absolute;
+    top: 40px;
+    left: 35px;
+    margin-left : 30px;
 }

@@ -1,10 +1,12 @@
 let tab_task = ["Task 0", "Task 1"];
 let tab_task_done = [];
-let tab_task_not_done = [];
+let tab_task_not_done = tab_task;
+let currentOnglet = 'Tout';
 
 
 document.addEventListener('DOMContentLoaded', function () {
     displayTasks(tab_task);
+    updateTotal();
     const onglets = document.querySelectorAll('.status .onglet');
 
     onglets.forEach(onglet => {
@@ -53,25 +55,36 @@ function displayTasks(all_tab) {
         a.addEventListener('change', function () {
             if (a.checked) {
                 tab_task_done.push(all_tab[i]);
-                tab_task_not_done.splice(tab_task_not_done.indexOf(all_tab[i]), 1);
+                tab_task_not_done = tab_task_not_done.filter(task => task !== all_tab[i]);
                 taskText.style.textDecoration = 'line-through';
                 taskText.style.color = '#bec0c2';
                 taskText.style.fontStyle = 'italic';
             }
             else {
                 tab_task_not_done.push(all_tab[i]);
-                tab_task_done.splice(tab_task_done.indexOf(all_tab[i]), 1);
+                tab_task_done = tab_task_done.filter(task => task !== all_tab[i]);
                 taskText.style.textDecoration = 'none';
                 taskText.style.color = '#000';
                 taskText.style.fontStyle = 'normal';
             }
             updateTotal();
+            swipe();
         });
     }
 
     console.log(all_tab);
 
 }
+
+function swipe() {
+    if (currentOnglet === 'Tout') {
+        displayTasks(tab_task);
+    } else if (currentOnglet === 'Faits') {
+        displayTasks(tab_task_done);
+    } else if (currentOnglet === 'Non Faits') {
+        displayTasks(tab_task_not_done);
+    }
+};
 
 function switch_status(event) {
     event.preventDefault();
@@ -84,6 +97,7 @@ function switch_status(event) {
     ongletClique.classList.add('active');
 
     const texteOnglet = event.currentTarget.textContent.trim();
+    currentOnglet = texteOnglet;
 
     if (texteOnglet === 'Tout') {
         displayTasks(tab_task);
@@ -94,7 +108,32 @@ function switch_status(event) {
     }
 }
 
+// function addTask() {
+//     console.log("addTask called");
+//     const taskText = text.value.trim();
+
+//     if (taskText !== '') {
+//         tab_task.push(taskText);
+//         tab_task_not_done.push(taskText);
+
+//         text.value = '';
+
+//         displayTasks(tab_task);
+//         updateTotal();
+//         swipe();
+
+//         document.getElementById('div_masq').style.display = "none";
+//         document.getElementById('btn').style.display = "block";
+//         section.removeChild(divMasq);
+//     } else {
+//         document.getElementById('div_masq').style.display = "none";
+//         document.getElementById('btn').style.display = "block";
+//         section.removeChild(divMasq);
+//     }
+// }   
+
 function newDiv() {
+    console.log("newDiv called");
     document.getElementById('btn').style.display = "none";
 
     const section = document.querySelector('.add_task');
@@ -111,8 +150,8 @@ function newDiv() {
     styleDiv(text, Btn, section);
 
     document.getElementById('div_masq').style.display = "block";
-
-    Btn.addEventListener('click', function () {
+    function addTask() {
+        console.log("addTask called");
         const taskText = text.value.trim();
 
         if (taskText !== '') {
@@ -122,6 +161,8 @@ function newDiv() {
             text.value = '';
 
             displayTasks(tab_task);
+            updateTotal();
+            swipe();
 
             document.getElementById('div_masq').style.display = "none";
             document.getElementById('btn').style.display = "block";
@@ -130,6 +171,13 @@ function newDiv() {
             document.getElementById('div_masq').style.display = "none";
             document.getElementById('btn').style.display = "block";
             section.removeChild(divMasq);
+        }
+    }   
+    Btn.addEventListener('click', addTask);
+    text.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            addTask();
         }
     });
 }
@@ -151,8 +199,16 @@ function styleDiv(test, Btn, section) {
 }
 
 function updateTotal() {
-    const total = document.querySelector('.total');
-    total.textContent = tab_task_done.length + ' / ' + tab_task.length + ' Tasks';
-    tab_task_done.style.fontSize = '20px';
-    tab_task_done.style.fontWeight = 'bold';
+    const total = document.querySelector('.total .bon');
+    // total.textContent = tab_task_done.length + ' / ' + tab_task.length + ' Tasks';
+    // total.style.fontSize = '20px';
+    // total.style.fontWeight = 'bold';
 }
+
+// const total = document.querySelector('.total .bon');
+//     const a = documentquerySelector('.total .bon .first_p');
+//     const b = document.querySelector('.total .bon .second_p');
+//     a = tab_task_done.length; b = tab_task.length;
+//     total.textContent = a + b + ' Tasks';
+//     a.style.fontSize = '50px';
+//     a.style.fontWeight = 'bold';
