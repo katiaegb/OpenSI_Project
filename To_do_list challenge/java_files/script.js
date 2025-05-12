@@ -172,7 +172,7 @@ function newDiv() {
             document.getElementById('btn').style.display = "block";
             section.removeChild(divMasq);
         }
-    }   
+    }
     Btn.addEventListener('click', addTask);
     text.addEventListener('keydown', function (event) {
         if (event.key === 'Enter') {
@@ -199,10 +199,14 @@ function styleDiv(test, Btn, section) {
 }
 
 function updateTotal() {
-    const total = document.querySelector('.total .bon');
-    // total.textContent = tab_task_done.length + ' / ' + tab_task.length + ' Tasks';
-    // total.style.fontSize = '20px';
-    // total.style.fontWeight = 'bold';
+    const a = document.querySelector('.bon .first_p');
+    const b = document.querySelector('.bon .second_p');
+
+    const totalDone = tab_task_done.length;
+    const totalTasks = tab_task.length;
+
+    a.textContent = totalDone;
+    b.textContent = '/' + totalTasks;
 }
 
 // const total = document.querySelector('.total .bon');
